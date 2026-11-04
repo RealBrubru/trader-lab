@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coleta pré-abertura 2026-11-04 — WDO</title>
+<style>
+:root{color-scheme:dark;--bg:#06080b;--p:#0c1015;--h:#121820;--bd:#1f2832;
+--fg:#dfe5ec;--mut:#7d8894;--ac:#4ea1ff;--pos:#3ddc84;--neg:#ff5d64;--amb:#e8b14a;
+--grid:#1c242e;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+*{box-sizing:border-box}
+body{margin:0;padding:8px;background:var(--bg);color:var(--fg);
+font:12px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:6px 10px;background:var(--h);border:1px solid var(--bd);border-radius:3px}
+.top b{font-size:13px;letter-spacing:.02em}
+.top .sym{color:var(--ac);font-family:var(--mono)}
+.top .meta{color:var(--mut);font-family:var(--mono);font-size:11px}
+.tag{padding:1px 5px;border:1px solid var(--bd);color:var(--mut);font-size:10px;letter-spacing:.06em}
+.tag.ro{color:var(--pos);border-color:#1f4d36}
+.kpis{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin:6px 0}
+.kpi{padding:6px 9px;background:var(--p);border:1px solid var(--bd);border-radius:3px;min-width:0}
+.kpi .k{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v{font-family:var(--mono);font-size:16px;font-weight:650;margin-top:2px;white-space:nowrap}
+.kpi .s{font-family:var(--mono);font-size:10px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.pn{min-width:0;background:var(--p);border:1px solid var(--bd);border-radius:3px;overflow:hidden}
+.pn>h2{margin:0;padding:4px 9px;background:var(--h);border-bottom:1px solid var(--bd);
+color:var(--mut);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.pn>.bd{padding:7px 9px}
+.s7{grid-column:span 7}.s5{grid-column:span 5}.s4{grid-column:span 4}.s8{grid-column:span 8}.s6{grid-column:span 6}.s12{grid-column:span 12}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:auto;min-width:60%;font-size:11px}
+th,td{padding:2px 12px 2px 8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left;font-family:inherit;color:var(--mut)}
+th{background:var(--h);color:var(--mut);font-size:10px;font-weight:600;letter-spacing:.04em}
+tbody tr:hover td{background:#141b23}
+.wrap{overflow-x:auto}
+.resumo{white-space:pre-wrap;font-size:12px;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.card{padding:6px 8px;border:1px solid var(--bd);background:var(--h);border-radius:3px}
+.card .k{color:var(--mut);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.card .v{font-family:var(--mono);font-size:15px;font-weight:650;margin-top:2px}
+.card .m{font-family:var(--mono);font-size:9px;color:var(--mut);overflow-wrap:anywhere}
+.leg{margin:4px 0 0;color:var(--mut);font-size:10px}
+.ctrs{display:flex;flex-direction:column;gap:6px}
+.ctr{display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:start}
+.ctk{color:var(--ac);font-family:var(--mono);font-weight:700;font-size:12px;padding-top:3px}
+.pares{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.cel{display:flex;justify-content:space-between;gap:6px;padding:3px 7px;background:var(--p);min-width:0}
+.lb{color:var(--mut);font-size:10px;white-space:nowrap;min-width:0}
+.vl{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;white-space:nowrap}
+svg{display:block;width:100%;height:auto}
+.chart-grid{stroke:var(--grid)}
+.chart-zero{stroke:#2c3642}
+.chart-axis{fill:var(--mut);font-family:var(--mono)}
+.chart-value{fill:var(--fg);font-family:var(--mono)}
+.chart-area{fill:var(--ac);fill-opacity:.12}
+.chart-line{stroke:var(--ac)}
+.chart-point{fill:var(--ac)}
+.bar-up{fill:var(--pos)}.bar-down{fill:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details summary{cursor:pointer;color:var(--ac);font-size:11px;padding:3px 0}
+.transc{max-height:220px;overflow:auto;padding:8px;border:1px solid var(--bd);background:var(--h);font-size:11px;white-space:pre-wrap}
+a{color:var(--ac)}
+footer{margin-top:6px;padding:5px 9px;border:1px solid var(--bd);background:var(--p);color:var(--mut);font-size:10px}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(4,minmax(0,1fr))}.s7,.s5,.s4,.s8,.s6{grid-column:1/-1}}
+</style></head><body>
+<header class="top">
+  <div><b>Coleta pré-abertura <span class="sym">WDO</span></b>
+    <span class="meta"> · 04/11/2026</span></div>
+  <div><span class="tag">SNAPSHOT</span> <span class="tag ro">SOMENTE LEITURA</span></div>
+</header>
+<section class="kpis"><div class="kpi"><div class="k">EWZ último</div><div class="v">32,21</div><div class="s ">vs 1ª rodada —</div></div><div class="kpi"><div class="k">WDO WDOZ26 fech.</div><div class="v">5.519,0</div><div class="s pos">ajuste +35,707</div></div><div class="kpi"><div class="k">WDO negócios</div><div class="v">720.612</div><div class="s">volume financeiro</div></div><div class="kpi"><div class="k">TIO=F minério</div><div class="v neg">-0,24%</div><div class="s">vs fech. anterior</div></div><div class="kpi"><div class="k">Tokens do dia</div><div class="v">—</div><div class="s">total de tokens</div></div><div class="kpi"><div class="k">Rodadas</div><div class="v">1/11</div><div class="s">última 07:00 BRT</div></div></section>
+<div class="grid">
+  <section class="pn s7" id="wdo-d1"><h2>WDO D-1 · contratos</h2><div class="bd"><div class="ctrs"><div class="ctr"><div class="ctk">WDOZ26</div><div class="pares"><div class="cel"><span class="lb">Abertura</span><span class="vl">5.518,0</span></div><div class="cel"><span class="lb">Máxima</span><span class="vl">5.546,0</span></div><div class="cel"><span class="lb">Mínima</span><span class="vl">5.498,0</span></div><div class="cel"><span class="lb">Fechamento</span><span class="vl">5.519,0</span></div><div class="cel"><span class="lb">VWAP</span><span class="vl">5.522,0</span></div><div class="cel"><span class="lb">Ajuste</span><span class="vl">5.524,0</span></div><div class="cel"><span class="lb">Ajuste anterior</span><span class="vl">5.488,0</span></div><div class="cel"><span class="lb">Variação do ajuste</span><span class="vl">35,5</span></div><div class="cel"><span class="lb">Negócios</span><span class="vl">720,61k</span></div><div class="cel"><span class="lb">Contratos</span><span class="vl">3,04M</span></div><div class="cel"><span class="lb">Volume financeiro</span><span class="vl">167,83B</span></div></div></div></div><p class="leg">Pregão 03/11/2026 · B3/BDI.</p></div></section>
+  <section class="pn s5" id="resumo"><h2>Resumo do dia</h2><div class="bd"><p class="leg">O resumo do dia é gerado na rodada final (08:40). Esta é uma atualização parcial.</p></div></section>
+
+  <section class="pn s4" id="ewz"><h2>EWZ por rodada</h2><div class="bd"><p class="leg">Dados insuficientes para EWZ por rodada.</p>
+    <p class="leg">Pré-mercado americano · Yahoo Finance.</p></div></section>
+  <section class="pn s4" id="minerio"><h2>Minério · var. %</h2><div class="bd"><svg viewBox="0 0 520 150" role="img" aria-label="Variação do minério"><line class="chart-zero" x1="44" y1="69.0" x2="500" y2="69.0"/><rect class="bar-down" x="72.5" y="69.0" width="57.0" height="6.5" rx="1"/><text class="chart-value" x="101.0" y="86.5" text-anchor="middle" font-size="10">-0,24%</text><text class="chart-axis" x="101.0" y="142" text-anchor="middle" font-size="10">TIO</text><rect class="bar-down" x="186.5" y="69.0" width="57.0" height="39.6" rx="1"/><text class="chart-value" x="215.0" y="119.6" text-anchor="middle" font-size="10">-1,46%</text><text class="chart-axis" x="215.0" y="142" text-anchor="middle" font-size="10">FMG</text><rect class="bar-down" x="300.5" y="69.0" width="57.0" height="41.2" rx="1"/><text class="chart-value" x="329.0" y="121.2" text-anchor="middle" font-size="10">-1,52%</text><text class="chart-axis" x="329.0" y="142" text-anchor="middle" font-size="10">BHP</text><rect class="bar-down" x="414.5" y="69.0" width="57.0" height="45.8" rx="1"/><text class="chart-value" x="443.0" y="125.8" text-anchor="middle" font-size="10">-1,69%</text><text class="chart-axis" x="443.0" y="142" text-anchor="middle" font-size="10">RIO</text></svg>
+    <p class="leg">TIO=F referência; FMG, BHP, RIO = proxies ASX.</p></div></section>
+  <section class="pn s4" id="tokens"><h2>Tokens e modelos</h2><div class="bd">
+    <div class="cards">
+      <div class="card"><div class="k">Total</div><div class="v">—</div></div>
+      <div class="card"><div class="k">Spyer</div><div class="v">0</div><div class="m">{}</div></div>
+      <div class="card"><div class="k">Resumo</div><div class="v">0</div><div class="m">—</div></div>
+    </div>
+    <p class="leg">Chamadas de modelo da coleta. O restante é Python puro.</p></div></section>
+
+  <section class="pn s6" id="spyer"><h2>Spyer</h2><div class="bd"><p>Vídeo do dia não encontrado até a última rodada.</p></div></section>
+  <section class="pn s6" id="rodadas"><h2>Rodadas</h2><div class="bd wrap">
+    <table><thead><tr><th>Indicador</th><th>07:00</th></tr></thead><tbody><tr><td>EWZ</td><td>32,21</td></tr><tr><td>DXY</td><td>101,34</td></tr><tr><td>USD/BRL</td><td>5,49</td></tr><tr><td>S&amp;P futuro</td><td>7.647,50</td></tr><tr><td>Minério TIO=F</td><td>91,03</td></tr><tr><td>Minério FMG.AX</td><td>14,19</td></tr><tr><td>Minério BHP.AX</td><td>55,56</td></tr><tr><td>Minério RIO.AX</td><td>143,05</td></tr></tbody></table></div></section>
+</div>
+<footer>Fontes: B3/BDI (D-1), Yahoo Finance (EWZ e minério), YouTube + Gemini (transcrição). Coleta automática e somente leitura — não envia, altera nem cancela ordens.</footer>
+</body></html>
