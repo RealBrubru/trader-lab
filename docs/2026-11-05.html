@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coleta pré-abertura 2026-11-05 — WDO</title>
+<style>
+:root{color-scheme:dark;--bg:#06080b;--p:#0c1015;--h:#121820;--bd:#1f2832;
+--fg:#dfe5ec;--mut:#7d8894;--ac:#4ea1ff;--pos:#3ddc84;--neg:#ff5d64;--amb:#e8b14a;
+--grid:#1c242e;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+*{box-sizing:border-box}
+body{margin:0;padding:8px;background:var(--bg);color:var(--fg);
+font:12px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:6px 10px;background:var(--h);border:1px solid var(--bd);border-radius:3px}
+.top b{font-size:13px;letter-spacing:.02em}
+.top .sym{color:var(--ac);font-family:var(--mono)}
+.top .meta{color:var(--mut);font-family:var(--mono);font-size:11px}
+.tag{padding:1px 5px;border:1px solid var(--bd);color:var(--mut);font-size:10px;letter-spacing:.06em}
+.tag.ro{color:var(--pos);border-color:#1f4d36}
+#agenda table{font-size:10px;width:100%}
+#agenda th,#agenda td{padding:2px 5px;white-space:nowrap}
+#agenda td:nth-child(3){max-width:190px;overflow:hidden;text-overflow:ellipsis}
+.ctk{white-space:nowrap}
+.du{font-size:9px;color:var(--mut);margin:1px 0 4px}
+.leg.min{font-size:9px;margin:5px 0 0;padding-top:5px;border-top:1px solid var(--bd)}
+.leg.min b{color:var(--fg);font-weight:600}
+
+.mesa-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.mesa-top .veredito{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.03em}
+.mesa-top .conv{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.mesa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
+.persona{display:flex;flex-direction:column;align-items:center;--pc:#5b8def}
+.balao{position:relative;background:var(--p);border:1px solid var(--pc);border-radius:8px;
+  padding:6px 8px;font-size:10px;line-height:1.45;width:100%;min-height:80px}
+.balao .pd{font-family:var(--mono);font-weight:700;font-size:11px;margin-bottom:2px}
+.balao:before{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;
+  border:6px solid transparent;border-top-color:var(--pc);border-bottom:0}
+.balao:after{content:"";position:absolute;left:50%;bottom:-4px;margin-left:-5px;
+  border:5px solid transparent;border-top-color:var(--p);border-bottom:0}
+.fig{margin-top:9px;display:flex;flex-direction:column;align-items:center}
+.cabeca{position:relative;width:18px;height:18px;border-radius:50%;background:var(--pc)}
+.cabeca:before,.cabeca:after{content:"";position:absolute;top:7px;width:2px;height:2px;
+  border-radius:50%;background:rgba(0,0,0,.6)}
+.cabeca:before{left:5px}.cabeca:after{right:5px}
+.ombro{width:32px;height:14px;border-radius:16px 16px 3px 3px;background:var(--pc);opacity:.9;margin-top:2px}
+.mesa-barra{height:3px;background:var(--bd);border-radius:2px;margin-top:-6px}
+.mesa-nome{font-size:9px;color:var(--mut);margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
+.mesa-mod{font-size:8px;color:var(--mut);opacity:.75;font-family:var(--mono)}
+.alerta{padding:4px 9px;border-radius:3px;font-size:10px;margin:2px 0 6px;line-height:1.5}
+.alerta.erro{background:#3a1414;color:#f0a8a8;border:1px solid #642a2a}
+.alerta.aviso{background:#33290f;color:#e5c98a;border:1px solid #5c4a1c}
+.var{font-style:normal;font-size:9px;font-weight:400;opacity:.9}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin:6px 0}
+.kpi{padding:6px 9px;background:var(--p);border:1px solid var(--bd);border-radius:3px;min-width:0}
+.kpi .k{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v{font-family:var(--mono);font-size:16px;font-weight:650;margin-top:2px;white-space:nowrap}
+.kpi .v .pv{font-size:11px;font-weight:500;opacity:.95;margin-left:2px}
+.kpi .s{font-family:var(--mono);font-size:10px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+.pn{min-width:0;background:var(--p);border:1px solid var(--bd);border-radius:3px;overflow:hidden}
+.pn>h2{margin:0;padding:4px 9px;background:var(--h);border-bottom:1px solid var(--bd);
+color:var(--mut);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.pn>.bd{padding:7px 9px}
+.s7{grid-column:span 7}.s5{grid-column:span 5}.s4{grid-column:span 4}.s8{grid-column:span 8}.s6{grid-column:span 6}.s12{grid-column:span 12}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:auto;min-width:60%;font-size:11px}
+th,td{padding:2px 12px 2px 8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left;font-family:inherit;color:var(--mut)}
+th{background:var(--h);color:var(--mut);font-size:10px;font-weight:600;letter-spacing:.04em}
+tbody tr:hover td{background:#141b23}
+.wrap{overflow-x:auto}
+.resumo{white-space:pre-wrap;font-size:12px;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.card{padding:6px 8px;border:1px solid var(--bd);background:var(--h);border-radius:3px}
+.card .k{color:var(--mut);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.card .v{font-family:var(--mono);font-size:15px;font-weight:650;margin-top:2px}
+.card .m{font-family:var(--mono);font-size:9px;color:var(--mut);overflow-wrap:anywhere}
+.leg{margin:4px 0 0;color:var(--mut);font-size:10px}
+.ctrs{display:flex;flex-direction:column;gap:6px}
+.ctr{display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:start}
+.ctk{color:var(--ac);font-family:var(--mono);font-weight:700;font-size:12px;padding-top:3px}
+.pares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.cel{display:flex;justify-content:space-between;gap:6px;padding:3px 7px;background:var(--p);min-width:0}
+.lb{color:var(--mut);font-size:10px;white-space:nowrap;min-width:0}
+.vl{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;white-space:nowrap}
+svg{display:block;width:100%;height:auto}
+.chart-grid{stroke:var(--grid)}
+.chart-zero{stroke:#2c3642}
+.chart-axis{fill:var(--mut);font-family:var(--mono)}
+.chart-value{fill:var(--fg);font-family:var(--mono)}
+.chart-area{fill:var(--ac);fill-opacity:.12}
+.chart-line{stroke:var(--ac)}
+.chart-point{fill:var(--ac)}
+.bar-up{fill:var(--pos)}.bar-down{fill:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details summary{cursor:pointer;color:var(--ac);font-size:11px;padding:3px 0}
+.transc{max-height:220px;overflow:auto;padding:8px;border:1px solid var(--bd);background:var(--h);font-size:11px;white-space:pre-wrap}
+a{color:var(--ac)}
+footer{margin-top:6px;padding:5px 9px;border:1px solid var(--bd);background:var(--p);color:var(--mut);font-size:10px}
+.chart-base{stroke:var(--mut);opacity:.55}
+.chart-base-lbl{fill:var(--mut);font-family:var(--mono)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.s7,.s5,.s4,.s8,.s6{grid-column:1/-1}}
+</style></head><body>
+<header class="top">
+  <div><b>Coleta pré-abertura <span class="sym">WDO</span></b>
+    <span class="meta"> · 05/11/2026 (07:00 BRT)</span></div>
+  <div><span class="tag">SNAPSHOT</span> <span class="tag ro">SOMENTE LEITURA</span></div>
+</header>
+<section class="kpis"><div class="kpi"><div class="k">USD/BRL</div><div class="v">R$ 5,48<span class="pos pv">(+0,03%)</span></div><div class="s">vs PTAX</div></div><div class="kpi"><div class="k">WDO anterior</div><div class="v">5.486,50<span class="neg pv">(-0,59%)</span></div><div class="s">-3,00 pts vs ajuste</div></div><div class="kpi"><div class="k">EWZ último</div><div class="v">US$ 32,48<span class="pos pv">(+0,71%)</span></div><div class="s ">vs 1ª rodada —</div></div><div class="kpi"><div class="k">IBOV implícito</div><div class="v">168.804<span class="pos pv">(+0,74%)</span></div><div class="s">EWZ +0,71% · câmbio +0,03%</div></div><div class="kpi"><div class="k">DI jan/29</div><div class="v">14,790%<span class="neg pv">(-28,0 bp)</span></div><div class="s">fech. 04/11/2026 · abre 09:00</div></div></section>
+<div class="alerta aviso">Checagem de sanidade: <b>AVISO</b> VALE (ADR): última leitura há 58 min · <b>AVISO</b> ITUB (ADR): última leitura há 60 min</div>
+<div class="grid">
+  <section class="pn s7" id="wdo-d1"><h2>WDO D-1 · contratos</h2><div class="bd"><div class="ctrs"><div class="ctr"><div><div class="ctk">WDOZ26</div></div><div class="pares"><div class="cel"><span class="lb">Abertura</span><span class="vl">5.480,00</span></div><div class="cel"><span class="lb">Fechamento</span><span class="vl">5.486,50</span></div><div class="cel"><span class="lb">Mínima</span><span class="vl">5.477,00</span></div><div class="cel"><span class="lb">Máxima</span><span class="vl">5.526,00</span></div><div class="cel"><span class="lb">Ajuste atual</span><span class="vl">5.489,50 (-34,50)</span></div><div class="cel"><span class="lb">Ajuste anterior</span><span class="vl">5.524,00</span></div><div class="cel"><span class="lb">VWAP</span><span class="vl">5.499,00</span></div><div class="cel"><span class="lb">Var. 52S · PTAX</span><span class="vl">+1,82%</span></div><div class="cel"><span class="lb">Volume</span><span class="vl">157,93B</span></div><div class="cel"><span class="lb">Negócios</span><span class="vl">658,04k</span></div></div></div></div><p class="leg">Pregão 04/11/2026 · B3/BDI.</p></div></section>
+  <section class="pn s5" id="resumo"><h2>Resumo do dia</h2><div class="bd"><p class="leg">O resumo do dia é gerado na rodada final (08:40). Esta é uma atualização parcial.</p></div></section>
+
+  <section class="pn s6" id="ewz"><h2>EWZ por rodada</h2><div class="bd"><p class="leg">Dados insuficientes para EWZ por rodada.</p>
+    <p class="leg">Pré-mercado americano · Yahoo Finance.</p></div></section>
+  <section class="pn s6" id="dxy"><h2>DXY por rodada</h2><div class="bd"><p class="leg">Dados insuficientes para DXY por rodada.</p>
+    <p class="leg">Índice do dólar (cesta) · Yahoo Finance.</p></div></section>
+
+  <section class="pn s6" id="brl"><h2>BRL vs pares EM · base 100</h2>
+    <div class="bd"><div class="pares"><div class="cel"><span class="lb">Índice BRL</span><span class="vl">99,97</span></div><div class="cel"><span class="lb">Índice pares</span><span class="vl">100,48</span></div></div><p class="leg"><b class="neg">Descolamento -0,51 pp</b> — o BRL ficou atrás dos emergentes.</p><p class="leg">Pares (força vs USD): MXN +0,15% · ZAR +0,16% · CLP +1,53% · CNH +0,08%</p><p class="leg"><b>Como ler:</b> índice 100 = fechamento de ontem. 99,68 significa que o BRL perdeu 0,32% contra o dólar; 100,53, que os pares ganharam 0,53%. A diferença entre os dois é o descolamento: até ±0,2 pp o real anda junto; acima de ±0,5 pp, está descolado. Zero seria o real se movendo exatamente como a média dos emergentes.</p><p class="leg"><b>Leitura de agora:</b> ficou atrás dos emergentes — os pares se valorizaram contra o dólar e o real não acompanhou.</p></div></section>
+  <section class="pn s6" id="agenda"><h2>Agenda do dia · tier-1 · BRT</h2>
+    <div class="bd wrap"><table><thead><tr><th>Hora</th><th>País</th><th>Evento</th><th>Import.</th><th>Atual</th><th>Esper.</th><th>Anterior</th></tr></thead><tbody><tr><td>10:30</td><td>US</td><td>Pedidos Iniciais de Subsídio de Desemprego</td><td>High</td><td>—</td><td>—</td><td>—</td></tr></tbody></table></div></section>
+
+  <section class="pn s6" id="spyer"><h2>Spyer</h2><div class="bd"><p>Vídeo do dia não encontrado até a última rodada.</p></div></section>
+  <section class="pn s6" id="rodadas"><h2>Indicadores</h2>
+    <div class="bd"><div class="wrap">
+      <table><thead><tr><th>Indicador</th><th>Fech. ant.</th><th>07:00</th></tr></thead><tbody><tr><td>EWZ</td><td>32,25</td><td>32,48 <span class="var pos">+0,71%</span></td></tr><tr><td>DXY</td><td>101,51</td><td>101,52 <span class="var pos">+0,01%</span></td></tr><tr><td>USD/BRL</td><td>5,4778 (PTAX 04/11/2026)</td><td>5,48 <span class="var pos">+0,03%</span></td></tr><tr><td>S&amp;P futuro</td><td>7.720,50</td><td>7.721,25 <span class="var pos">+0,01%</span></td></tr><tr><td>Nasdaq fut.</td><td>28.566,75</td><td>28.391,00 <span class="var neg">-0,62%</span></td></tr><tr><td>VIX</td><td>16,61</td><td>16,99 <span class="var pos">+2,29%</span></td></tr><tr><td>PBR (ADR)</td><td>19,61</td><td>19,65 <span class="var pos">+0,18%</span></td></tr><tr><td>VALE (ADR)</td><td>11,43</td><td>11,46 <span class="var pos">+0,26%</span></td></tr><tr><td>ITUB (ADR)</td><td>7,28</td><td>7,27 <span class="var neg">-0,14%</span></td></tr><tr><td>USD/MXN</td><td>18,6078</td><td>18,5800 <span class="var neg">-0,15%</span></td></tr><tr><td>USD/ZAR</td><td>16,4091</td><td>16,3831 <span class="var neg">-0,16%</span></td></tr><tr><td>USD/CNH</td><td>6,6735</td><td>6,6680 <span class="var neg">-0,08%</span></td></tr><tr><td>USD/CLP</td><td>980,5600</td><td>965,6000 <span class="var neg">-1,53%</span></td></tr><tr><td>Brent</td><td>94,62</td><td>95,79 <span class="var pos">+1,24%</span></td></tr></tbody></table></div>
+      <p class="leg min"><b>Minério</b> (fechamento diário, não gira com as rodadas): TIO <span class="pos">+1,01%</span> · FMG <span class="pos">+9,16%</span> · BHP <span class="pos">+6,19%</span> · RIO <span class="pos">+6,98%</span></p></div></section>
+
+  <section class="pn s12" id="mesa"><h2>Mesa decisora · leilão de abertura</h2>
+    <div class="bd"><p class="leg">A mesa ainda não rodou hoje.</p></div></section>
+
+  <section class="pn s12" id="conferencia"><h2>Conferência · o sinal acertou?</h2>
+    <div class="bd wrap"><p class="leg"><b>04/11/2026</b> — sinal das 08:40 · abertura 5.480,00 → 09:10 5.491,50 (+11,5 pts, alta) · máx 5.495,00 / mín 5.477,00 · excursão a favor +15,0 pts · contra +3,0 pts</p><p class="leg"><b>Mesa às 08:40:</b> NÃO OPERAR (baixa) · amplitude +15,0 pts · ❌ errou · <span style="opacity:.75">Apesar de DXY -0,44% e EWZ +1,63%, USD/BRL cai apenas -0,09%, há divergência no minério (TIO -0,24% vs Dalian +1,5%) e cautela pré-Copom, inviabilizando entradas seguras </span></p><table><thead><tr><th>Sinal</th><th>Às 08:40</th><th>Previu</th><th>Acertou</th></tr></thead><tbody><tr><td>EWZ</td><td>+1,63%</td><td>baixa</td><td>❌</td></tr><tr><td>DXY</td><td>-0,44%</td><td>baixa</td><td>❌</td></tr><tr><td>S&amp;P futuro</td><td>+1,14%</td><td>baixa</td><td>❌</td></tr></tbody></table><p class="leg"><b>Acumulado · 3 pregão(ões)</b> · excursão média a favor +18,3 pts</p><table><thead><tr><th>Sinal</th><th>Acertos</th><th>Quando previu alta</th><th>Quando previu baixa</th></tr></thead><tbody><tr><td>EWZ</td><td>1/2 (50%)</td><td>1/1 (100%)</td><td>0/1 (0%)</td></tr><tr><td>DXY</td><td>0/1 (0%)</td><td>—</td><td>0/1 (0%)</td></tr><tr><td>S&amp;P futuro</td><td>0/1 (0%)</td><td>—</td><td>0/1 (0%)</td></tr></tbody></table></div></section>
+</div>
+<footer>Fontes: B3/BDI (D-1), Yahoo Finance (EWZ e minério), YouTube + Gemini (transcrição). Coleta automática e somente leitura — não envia, altera nem cancela ordens.<br>
+Cotações: USD/BRL pelo futuro de BRL da CME (6L, invertido); DXY é o índice do dólar;
+S&amp;P é o futuro ES.<br>
+Resumo do dia: 0 tokens (não gerado).</footer>
+</body></html>
