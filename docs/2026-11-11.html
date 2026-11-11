@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-BR"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Coleta pré-abertura 2026-11-11 — WDO</title>
+<style>
+:root{color-scheme:dark;--bg:#06080b;--p:#0c1015;--h:#121820;--bd:#1f2832;
+--fg:#dfe5ec;--mut:#7d8894;--ac:#4ea1ff;--pos:#3ddc84;--neg:#ff5d64;--amb:#e8b14a;
+--grid:#1c242e;--mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;}
+*{box-sizing:border-box}
+body{margin:0;padding:8px;background:var(--bg);color:var(--fg);
+font:12px/1.35 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;
+padding:6px 10px;background:var(--h);border:1px solid var(--bd);border-radius:3px}
+.top b{font-size:13px;letter-spacing:.02em}
+.top .sym{color:var(--ac);font-family:var(--mono)}
+.top .meta{color:var(--mut);font-family:var(--mono);font-size:11px}
+.tag{padding:1px 5px;border:1px solid var(--bd);color:var(--mut);font-size:10px;letter-spacing:.06em}
+.tag.ro{color:var(--pos);border-color:#1f4d36}
+#agenda table{font-size:10px;width:100%}
+#agenda th,#agenda td{padding:2px 5px;white-space:nowrap}
+#agenda td:nth-child(3){max-width:190px;overflow:hidden;text-overflow:ellipsis}
+.ctk{white-space:nowrap}
+.du{font-size:9px;color:var(--mut);margin:1px 0 4px}
+.leg.min{font-size:9px;margin:5px 0 0;padding-top:5px;border-top:1px solid var(--bd)}
+.leg.min b{color:var(--fg);font-weight:600}
+
+.mesa-top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:4px}
+.mesa-top .veredito{font-family:var(--mono);font-size:15px;font-weight:700;letter-spacing:.03em}
+.mesa-top .conv{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:.05em}
+.mesa-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:6px}
+.persona{display:flex;flex-direction:column;align-items:center;--pc:#5b8def}
+.balao{position:relative;background:var(--p);border:1px solid var(--pc);border-radius:8px;
+  padding:6px 8px;font-size:10px;line-height:1.45;width:100%;min-height:80px}
+.balao .pd{font-family:var(--mono);font-weight:700;font-size:11px;margin-bottom:2px}
+.balao:before{content:"";position:absolute;left:50%;bottom:-6px;margin-left:-6px;
+  border:6px solid transparent;border-top-color:var(--pc);border-bottom:0}
+.balao:after{content:"";position:absolute;left:50%;bottom:-4px;margin-left:-5px;
+  border:5px solid transparent;border-top-color:var(--p);border-bottom:0}
+.fig{margin-top:9px;display:flex;flex-direction:column;align-items:center}
+.cabeca{position:relative;width:18px;height:18px;border-radius:50%;background:var(--pc)}
+.cabeca:before,.cabeca:after{content:"";position:absolute;top:7px;width:2px;height:2px;
+  border-radius:50%;background:rgba(0,0,0,.6)}
+.cabeca:before{left:5px}.cabeca:after{right:5px}
+.ombro{width:32px;height:14px;border-radius:16px 16px 3px 3px;background:var(--pc);opacity:.9;margin-top:2px}
+.mesa-barra{height:3px;background:var(--bd);border-radius:2px;margin-top:-6px}
+.mesa-nome{font-size:9px;color:var(--mut);margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
+.mesa-mod{font-size:8px;color:var(--mut);opacity:.75;font-family:var(--mono)}
+.alerta{padding:4px 9px;border-radius:3px;font-size:10px;margin:2px 0 6px;line-height:1.5}
+.alerta.erro{background:#3a1414;color:#f0a8a8;border:1px solid #642a2a}
+.alerta.aviso{background:#33290f;color:#e5c98a;border:1px solid #5c4a1c}
+.var{font-style:normal;font-size:9px;font-weight:400;opacity:.9}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:6px;margin:6px 0}
+.lv{font-weight:400;opacity:.62;font-size:9px}
+#reservado{border-style:dashed;opacity:.35}
+.kpi{padding:6px 9px;background:var(--p);border:1px solid var(--bd);border-radius:3px;min-width:0;position:relative}
+.ii{display:inline-flex;align-items:center;justify-content:center;width:11px;height:11px;border-radius:50%;
+border:1px solid var(--mut);color:var(--mut);font-size:7px;font-weight:700;margin-left:4px;opacity:.45;
+vertical-align:1px;cursor:help;font-style:normal}
+[data-tip]{position:relative;cursor:help}
+[data-tip]:hover .ii,[data-tip]:focus-visible .ii{opacity:1}
+[data-tip]:hover::after,[data-tip]:focus-visible::after{content:attr(data-tip);position:absolute;left:0;
+top:calc(100% + 7px);z-index:80;width:max-content;max-width:250px;background:#0b0f14;color:var(--fg);
+border:1px solid var(--bd);border-radius:5px;padding:7px 9px;font-size:10px;line-height:1.45;font-weight:400;
+letter-spacing:0;text-transform:none;white-space:normal;box-shadow:0 10px 24px #000000aa;pointer-events:none}
+[data-tip].tr:hover::after,[data-tip].tr:focus-visible::after{left:auto;right:0}
+#rodadas th.nova,#rodadas td:nth-child(2){background:#1b2129}
+table.esc{width:100%;border-collapse:collapse;font:10px/1.5 var(--mono);table-layout:fixed}
+table.esc th:first-child,table.esc td:first-child{width:24%}
+table.esc th{text-align:right;color:var(--mut);font-weight:500;font-size:8px;text-transform:uppercase;
+letter-spacing:.05em;padding:0 6px 4px;border-bottom:1px solid var(--bd)}
+table.esc th:first-child{text-align:left}
+table.esc td{padding:2px 6px;text-align:right;border-bottom:1px solid #1c2128}
+table.esc td:first-child{text-align:left;color:var(--mut)}
+table.esc tr.base td{border-top:1px solid var(--bd);border-bottom:1px solid var(--bd);color:var(--fg)}
+table.esc td.deg{font-weight:700;color:var(--fg)}
+.sep{opacity:.4;margin:0 5px}
+.kpi .k{color:var(--mut);font-size:10px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.kpi .v{font-family:var(--mono);font-size:16px;font-weight:650;margin-top:2px;white-space:nowrap}
+.kpi .v .pv{font-size:11px;font-weight:500;opacity:.95;margin-left:2px}
+.kpi .s{font-family:var(--mono);font-size:10px;color:var(--mut);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:6px}
+/* ---------- shell do terminal ---------- */
+body{padding:0}
+.app{display:block;min-height:100vh}
+aside{background:#0b0f15;border-right:1px solid var(--bd);padding:12px 9px;position:sticky;
+top:0;height:100vh;display:flex;flex-direction:column;gap:12px;font-size:11px}
+.marca{font-size:13px;font-weight:650;padding:0 6px;letter-spacing:.01em}
+.marca b{color:#d29922}
+.busca{background:var(--p);border:1px solid var(--bd);border-radius:6px;padding:5px 8px;
+display:flex;justify-content:space-between;color:var(--mut);font-size:10px}
+.busca kbd{font:9px/1 var(--mono);border:1px solid var(--bd);border-radius:3px;padding:2px 4px}
+.grp{font:8px/1 var(--mono);letter-spacing:.15em;color:#5b6472;padding:0 6px;margin-bottom:4px}
+.nav a{display:flex;justify-content:space-between;gap:8px;padding:5px 7px;border-radius:5px;
+color:#aab4c0;text-decoration:none;font-size:11px}
+.nav a:hover{background:#12161d;color:var(--fg)}
+.nav a.on{background:#1b1a12;color:#d29922;font-weight:600}
+.nav .mut2{font-size:9px;opacity:.45}
+.rodape-s{margin-top:auto;display:flex;flex-direction:column;gap:6px;color:var(--mut);font-size:10px}
+.tg{display:flex;justify-content:space-between;padding:3px 6px}
+.sw{width:24px;height:13px;border-radius:8px;background:#2a323d;position:relative}
+.sw.on{background:#1f6f3f}
+.sw:after{content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;background:#e6edf3}
+.sw.on:after{left:13px}
+main{min-width:0;padding:0 12px 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;gap:14px;
+padding:13px 0 11px;border-bottom:1px solid var(--bd);position:sticky;top:0;z-index:40;
+background:rgba(10,13,18,.95);backdrop-filter:blur(6px)}
+header.top .hora{font:13px/1.1 var(--mono);letter-spacing:.02em;display:flex;gap:8px;align-items:center}
+header.top .st-in{font:9px/1 var(--mono);letter-spacing:.07em;color:var(--mut);
+margin-left:10px;padding-left:10px;border-left:1px solid var(--bd)}
+header.top .st-in b{color:var(--fg)}
+.pontinho{width:6px;height:6px;border-radius:50%;background:#3fb950;display:inline-block}
+.kpis{grid-template-columns:repeat(7,minmax(0,1fr));gap:7px;margin:10px 0 8px}
+.kpi{border-radius:7px;padding:9px 10px}
+.kpi .v{font-size:18px}
+.spk{display:block;width:100%;margin:4px 0 0}
+.grid{margin-top:8px}
+.pn{min-width:0;background:var(--p);border:1px solid var(--bd);border-radius:3px;overflow:hidden}
+.pn>h2{margin:0;padding:4px 9px;background:var(--h);border-bottom:1px solid var(--bd);
+color:var(--mut);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.pn>.bd{padding:7px 9px}
+.s7{grid-column:span 7}.s5{grid-column:span 5}.s3{grid-column:span 3}
+.s4{grid-column:span 4}.s8{grid-column:span 8}.s6{grid-column:span 6}.s12{grid-column:span 12}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+table{border-collapse:collapse;width:auto;min-width:60%;font-size:11px}
+th,td{padding:2px 12px 2px 8px;border-bottom:1px solid var(--bd);text-align:right;white-space:nowrap;font-family:var(--mono);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left;font-family:inherit;color:var(--mut)}
+th{background:var(--h);color:var(--mut);font-size:10px;font-weight:600;letter-spacing:.04em}
+tbody tr:hover td{background:#141b23}
+.wrap{overflow-x:auto}
+.resumo{white-space:pre-wrap;font-size:12px;line-height:1.5}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.card{padding:6px 8px;border:1px solid var(--bd);background:var(--h);border-radius:3px}
+.card .k{color:var(--mut);font-size:9px;text-transform:uppercase;letter-spacing:.05em}
+.card .v{font-family:var(--mono);font-size:15px;font-weight:650;margin-top:2px}
+.card .m{font-family:var(--mono);font-size:9px;color:var(--mut);overflow-wrap:anywhere}
+.leg{margin:4px 0 0;color:var(--mut);font-size:10px}
+.ctrs{display:flex;flex-direction:column;gap:6px}
+.ctr{display:grid;grid-template-columns:70px 1fr;gap:6px;align-items:start}
+.ctk{color:var(--ac);font-family:var(--mono);font-weight:700;font-size:12px;padding-top:3px}
+.pares{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--bd);border:1px solid var(--bd)}
+.cel{display:flex;justify-content:space-between;gap:6px;padding:3px 7px;background:var(--p);min-width:0}
+.lb{color:var(--mut);font-size:10px;white-space:nowrap;min-width:0}
+.vl{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:11px;white-space:nowrap}
+svg{display:block;width:100%;height:auto}
+.chart-grid{stroke:var(--grid)}
+.chart-zero{stroke:#2c3642}
+.chart-axis{fill:var(--mut);font-family:var(--mono)}
+.chart-value{fill:var(--fg);font-family:var(--mono)}
+.chart-area{fill:var(--ac);fill-opacity:.12}
+.chart-line{stroke:var(--ac)}
+.chart-point{fill:var(--ac)}
+.bar-up{fill:var(--pos)}.bar-down{fill:var(--neg)}
+.pos{color:var(--pos)}.neg{color:var(--neg)}
+details summary{cursor:pointer;color:var(--ac);font-size:11px;padding:3px 0}
+#spyer details{margin-top:6px}
+.transc{max-height:430px;overflow:auto;padding:8px;border:1px solid var(--bd);background:var(--h);font-size:11px;white-space:pre-wrap}
+a{color:var(--ac)}
+footer{margin-top:6px;padding:5px 9px;border:1px solid var(--bd);background:var(--p);color:var(--mut);font-size:10px}
+.chart-base{stroke:var(--mut);opacity:.55}
+.chart-base-lbl{fill:var(--mut);font-family:var(--mono)}
+@media (max-width:1100px){.kpis{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}.s7,.s5,.s4,.s8,.s6{grid-column:1/-1}}
+</style></head><body><div class="app">
+
+<main>
+<header class="top">
+  <div class="hora"><span class="pontinho"></span>07:00
+    <span class="mut">· 11/11/2026</span>
+    <span class="st-in">B3 <b>PRÉ-ABERTURA</b></span>
+    <span class="st-in">LEILÃO <b>08:45</b></span>
+    <span class="st-in mut">COLETA 07:00 BRT</span></div>
+  <div><span class="tag">SNAPSHOT</span> <span class="tag ro">SOMENTE LEITURA</span></div>
+</header>
+<section class="kpis"><div class="kpi" data-tip="Dólar futuro negociado na CME (6L), convertido para reais por dólar. A variação é contra o fechamento da sessão anterior do próprio 6L — comparar com o PTAX misturaria o cupom cambial com movimento do real." tabindex="0"><div class="k">USD/BRL<span class="ii">i</span></div><div class="v">R$ 5,59<span class="pos pv">(+0,03%)</span></div><div class="s">vs 6L · PTAX 5,5840</div></div><div class="kpi" data-tip="Fechamento do pregão anterior do contrato em vigor. A variação é medida contra o ajuste de liquidação, não contra o fechamento." tabindex="0"><div class="k">WDO anterior<span class="ii">i</span></div><div class="v">5.603,00<span class="pos pv">(+1,28%)</span></div><div class="s">-4,50 pts vs ajuste</div></div><div class="kpi" data-tip="ETF de Brasil negociado em Nova York. Sobe quando o estrangeiro compra Brasil e costuma antecipar o fluxo para o Ibovespa." tabindex="0"><div class="k">EWZ último<span class="ii">i</span></div><div class="v">US$ 32,21<span class="pos pv">(+0,19%)</span></div><div class="s ">vs 1ª rodada —</div></div><div class="kpi" data-tip="(1 + EWZ) × (1 + USD/BRL) − 1, aplicado ao fechamento anterior do Ibovespa. Erra em média 0,33 pp contra o índice real." tabindex="0"><div class="k">IBOV implícito<span class="ii">i</span></div><div class="v">171.714<span class="pos pv">(+0,22%)</span></div><div class="s">EWZ +0,19% · câmbio +0,03%</div></div><div class="kpi" data-tip="Probabilidade implícita nos futuros de Fed Funds (ZQ, CBOT): (taxa depois − taxa antes) / 0,25. A taxa de depois vem do contrato do mês da reunião, descontados os dias de antes — o contrato do mês seguinte somaria a reunião que vem depois. Pelo atalho (mês seguinte) daria 120%. Réplica do FedWatch, não o número oficial. Reunião em 09/12." tabindex="0"><div class="k">Fed · 09/12<span class="ii">i</span></div><div class="v">113%<span class="pv"> alta</span></div><div class="s pos">+31,0 p.p. vs ontem</div></div><div class="kpi tr" data-tip="Contrato DI1F29, cotado em taxa (% ao ano). Taxa subindo = juro futuro mais alto. Abre às 09:00, então não move a decisão das 08:40." tabindex="0"><div class="k">DI jan/29<span class="ii">i</span></div><div class="v">14,580%<span class="pos pv">(+6,0 bp)</span></div><div class="s">fech. 10/11</div></div></section>
+
+<div class="grid">
+  <section class="pn s5" id="wdo-d1"><h2>WDO D-1 · contratos</h2><div class="bd"><div class="ctrs"><div class="ctr"><div><div class="ctk">WDOZ26</div></div><div class="pares"><div class="cel"><span class="lb">Abertura</span><span class="vl">5.544,00</span></div><div class="cel"><span class="lb">Fechamento</span><span class="vl">5.603,00</span></div><div class="cel"><span class="lb">Mínima</span><span class="vl">5.537,50</span></div><div class="cel"><span class="lb">Máxima</span><span class="vl">5.631,50 <span class="lv">(~94,0 pts)</span></span></div><div class="cel"><span class="lb">Ajuste atual</span><span class="vl">5.607,50 <span class="lv">(+74,50 ant.)</span></span></div><div class="cel"><span class="lb">Ajuste anterior</span><span class="vl">5.533,00</span></div><div class="cel"><span class="lb">VWAP</span><span class="vl">5.597,50</span></div><div class="cel"><span class="lb">Var. 52S · PTAX</span><span class="vl">+5,90%</span></div><div class="cel"><span class="lb">Volume</span><span class="vl">183,75B</span></div><div class="cel"><span class="lb">Negócios</span><span class="vl">715,03k</span></div></div></div></div><p class="leg">Pregão 10/11/2026 · B3/BDI.</p></div></section>
+  <section class="pn s7" id="resumo"><h2>Resumo do dia</h2><div class="bd"><p class="leg">O resumo do dia é gerado na rodada final (08:40). Esta é uma atualização parcial.</p></div></section>
+
+  <section class="pn s6" id="ewz"><h2>EWZ por rodada</h2><div class="bd"><p class="leg">Dados insuficientes para EWZ por rodada.</p>
+    <p class="leg">Pré-mercado americano · Yahoo Finance.</p></div></section>
+  <section class="pn s6" id="dxy"><h2>DXY por rodada</h2><div class="bd"><p class="leg">Dados insuficientes para DXY por rodada.</p>
+    <p class="leg">Índice do dólar (cesta) · Yahoo Finance.</p></div></section>
+
+  <section class="pn s6" id="brl"><h2>BRL vs pares EM · base 100</h2>
+    <div class="bd"><div class="pares" data-tip="Índice BRL = 100 / (1 + variação do USD/BRL): o real fica mais forte quando o dólar cai. Índice pares = média simples de MXN, ZAR, CLP e CNH, cada um com o mesmo cálculo. Base 100 = fechamento de ontem." tabindex="0"><div class="cel"><span class="lb">Índice BRL</span><span class="vl">99,97</span></div><div class="cel"><span class="lb">Índice pares</span><span class="vl">99,59</span></div></div><p class="leg"><b class="pos">Descolamento +0,38 pp</b> — o BRL andou à frente dos emergentes.</p><p class="leg">Pares (força vs USD): MXN +0,11% · ZAR -0,10% · CLP -1,73% · CNH +0,10%</p><p class="leg"><b>Como ler:</b> índice 100 = fechamento de ontem. 99,68 significa que o BRL perdeu 0,32% contra o dólar; 100,53, que os pares ganharam 0,53%. A diferença entre os dois é o descolamento: até ±0,2 pp o real anda junto; acima de ±0,5 pp, está descolado. Zero seria o real se movendo exatamente como a média dos emergentes.</p><p class="leg"><b>Leitura de agora:</b> andou à frente dos emergentes — os pares se valorizaram contra o dólar e o real não acompanhou.</p></div></section>
+  <section class="pn s6" id="agenda"><h2>Agenda do dia · BRT</h2>
+    <div class="bd wrap"><p class="leg">Sem consenso nem resultado nesta fonte (o calendário da corretora traz só horário e evento).</p><table><thead><tr><th>Hora</th><th>País</th><th>Evento</th><th>Import.</th></tr></thead><tbody><tr><td colspan="4">Nenhum evento relevante hoje.</td></tr></tbody></table></div></section>
+
+  <section class="pn s6" id="spyer"><h2>Spyer</h2><div class="bd"><p>Vídeo do dia não encontrado até a última rodada.</p></div></section>
+  <section class="pn s6" id="rodadas"><h2>Indicadores</h2>
+    <div class="bd"><div class="wrap">
+      <table><thead><tr><th>Indicador</th><th>Fech. ant.</th><th class="nova">07:00</th></tr></thead><tbody><tr><td>EWZ</td><td>32,15</td><td>32,21 <span class="var pos">+0,19%</span></td></tr><tr><td>DXY</td><td>102,23</td><td>102,48 <span class="var pos">+0,24%</span></td></tr><tr><td>USD/BRL</td><td title="6L de 11/11/2026 · PTAX oficial 5,584 em 10/11/2026 — base da variação">5,59</td><td>5,59 <span class="var pos">+0,03%</span></td></tr><tr><td>S&amp;P futuro</td><td>7.544,25</td><td>7.598,75 <span class="var pos">+0,72%</span></td></tr><tr><td>Nasdaq fut.</td><td>27.835,25</td><td>28.297,25 <span class="var pos">+1,66%</span></td></tr><tr><td>VIX</td><td>19,46</td><td>18,71 <span class="var neg">-3,85%</span></td></tr><tr><td>PBR (ADR)</td><td>18,28</td><td>17,89 <span class="var neg">-2,13%</span></td></tr><tr><td>VALE (ADR)</td><td>11,58</td><td>11,79 <span class="var pos">+1,81%</span></td></tr><tr><td>ITUB (ADR)</td><td>7,39</td><td>7,41 <span class="var pos">+0,27%</span></td></tr><tr><td>USD/MXN</td><td>18,6090</td><td>18,5893 <span class="var neg">-0,11%</span></td></tr><tr><td>USD/ZAR</td><td>16,5292</td><td>16,5455 <span class="var pos">+0,10%</span></td></tr><tr><td>USD/CNH</td><td>6,6756</td><td>6,6687 <span class="var neg">-0,10%</span></td></tr><tr><td>USD/CLP</td><td>966,9600</td><td>983,6900 <span class="var pos">+1,73%</span></td></tr><tr><td>Brent</td><td>91,49</td><td>92,64 <span class="var pos">+1,26%</span></td></tr><tr><td>DAX</td><td>26.347,45</td><td>26.534,01 <span class="var pos">+0,71%</span></td></tr><tr><td>Euro Stoxx 50</td><td>6.327,87</td><td>6.368,21 <span class="var pos">+0,64%</span></td></tr><tr><td>Dow futuro</td><td>52.315,00</td><td>52.319,00 <span class="var pos">+0,01%</span></td></tr><tr><td>Bitcoin</td><td>73.720,12</td><td>73.697,66 <span class="var neg">-0,03%</span></td></tr></tbody></table></div>
+      <p class="leg min"><b>Minério</b> (fechamento diário, não gira com as rodadas): TIO <span class="neg">-0,18%</span> · FMG <span class="pos">+0,39%</span> · BHP <span class="pos">+0,87%</span> · RIO <span class="pos">+0,67%</span></p></div></section>
+
+  <section class="pn s3" id="escada-wdo"><h2>Análise de Variação · WDO</h2>
+    <div class="bd"><p class="leg"><b>WDOZ26</b> · fech. 5.603,00 · ajuste 5.607,50</p><table class="esc"><thead><tr><th>Var.</th><th>Fech. anterior</th><th>Ajuste anterior</th></tr></thead><tbody><tr class="" style="background:rgba(63,185,80,0.155)"><td>+3,0%</td><td>5.771,00</td><td>5.775,50</td></tr><tr class="" style="background:rgba(63,185,80,0.138)"><td>+2,5%</td><td>5.743,00</td><td>5.747,50</td></tr><tr class="" style="background:rgba(63,185,80,0.122)"><td class="deg">+2,0%</td><td class="deg">5.715,00</td><td class="deg">5.719,50</td></tr><tr class="" style="background:rgba(63,185,80,0.105)"><td class="deg">+1,5%</td><td class="deg">5.687,00</td><td class="deg">5.691,50</td></tr><tr class="" style="background:rgba(63,185,80,0.088)"><td class="deg">+1,0%</td><td class="deg">5.659,00</td><td class="deg">5.663,50</td></tr><tr class="" style="background:rgba(63,185,80,0.072)"><td>+0,5%</td><td>5.631,00</td><td>5.635,50</td></tr><tr class="base"><td>0,0%</td><td>5.603,00</td><td>5.607,50</td></tr><tr class="" style="background:rgba(248,81,73,0.072)"><td>-0,5%</td><td>5.575,00</td><td>5.579,00</td></tr><tr class="" style="background:rgba(248,81,73,0.088)"><td class="deg">-1,0%</td><td class="deg">5.547,00</td><td class="deg">5.551,00</td></tr><tr class="" style="background:rgba(248,81,73,0.105)"><td class="deg">-1,5%</td><td class="deg">5.519,00</td><td class="deg">5.523,00</td></tr><tr class="" style="background:rgba(248,81,73,0.122)"><td class="deg">-2,0%</td><td class="deg">5.491,00</td><td class="deg">5.495,00</td></tr><tr class="" style="background:rgba(248,81,73,0.138)"><td>-2,5%</td><td>5.463,00</td><td>5.467,00</td></tr><tr class="" style="background:rgba(248,81,73,0.155)"><td>-3,0%</td><td>5.435,00</td><td>5.439,00</td></tr></tbody></table><p class="leg">Em negrito: os níveis de 1%, 1,5% e 2%. Arredondado ao tick do contrato (WDO 0,5 · WIN 5) — é onde a ordem cabe.</p></div></section>
+
+  <section class="pn s3" id="escada-win"><h2>Análise de Variação · WIN</h2>
+    <div class="bd"><p class="leg"><b>WINZ26</b> · fech. 173.305 · ajuste 173.210</p><table class="esc"><thead><tr><th>Var.</th><th>Fech. anterior</th><th>Ajuste anterior</th></tr></thead><tbody><tr class="" style="background:rgba(63,185,80,0.155)"><td>+3,0%</td><td>178.505</td><td>178.405</td></tr><tr class="" style="background:rgba(63,185,80,0.138)"><td>+2,5%</td><td>177.640</td><td>177.540</td></tr><tr class="" style="background:rgba(63,185,80,0.122)"><td class="deg">+2,0%</td><td class="deg">176.770</td><td class="deg">176.675</td></tr><tr class="" style="background:rgba(63,185,80,0.105)"><td class="deg">+1,5%</td><td class="deg">175.905</td><td class="deg">175.805</td></tr><tr class="" style="background:rgba(63,185,80,0.088)"><td class="deg">+1,0%</td><td class="deg">175.040</td><td class="deg">174.940</td></tr><tr class="" style="background:rgba(63,185,80,0.072)"><td>+0,5%</td><td>174.170</td><td>174.075</td></tr><tr class="base"><td>0,0%</td><td>173.305</td><td>173.210</td></tr><tr class="" style="background:rgba(248,81,73,0.072)"><td>-0,5%</td><td>172.440</td><td>172.345</td></tr><tr class="" style="background:rgba(248,81,73,0.088)"><td class="deg">-1,0%</td><td class="deg">171.570</td><td class="deg">171.475</td></tr><tr class="" style="background:rgba(248,81,73,0.105)"><td class="deg">-1,5%</td><td class="deg">170.705</td><td class="deg">170.610</td></tr><tr class="" style="background:rgba(248,81,73,0.122)"><td class="deg">-2,0%</td><td class="deg">169.840</td><td class="deg">169.745</td></tr><tr class="" style="background:rgba(248,81,73,0.138)"><td>-2,5%</td><td>168.970</td><td>168.880</td></tr><tr class="" style="background:rgba(248,81,73,0.155)"><td>-3,0%</td><td>168.105</td><td>168.015</td></tr></tbody></table><p class="leg">Em negrito: os níveis de 1%, 1,5% e 2%. Arredondado ao tick do contrato (WDO 0,5 · WIN 5) — é onde a ordem cabe.</p></div></section>
+
+  <!-- espaço reservado: pendente de conteúdo -->
+  <section class="pn s6" id="reservado" aria-label="espaço reservado"></section>
+
+  
+</div>
+<footer>Fontes: B3/BDI (D-1), Yahoo Finance (EWZ e minério), YouTube + Gemini (transcrição). Coleta automática e somente leitura — não envia, altera nem cancela ordens.<br>
+Cotações: USD/BRL pelo futuro de BRL da CME (6L, invertido); DXY é o índice do dólar;
+S&amp;P é o futuro ES.<br>
+Resumo do dia: 0 tokens (não gerado).</footer>
+</main></div>
+</body></html>
